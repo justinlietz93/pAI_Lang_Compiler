@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "description": "Transformation matrix for Natural Language to Command Language",
+  "rules": [
+    {
+      "pattern": "initialize {system}",
+      "template": ">>> INITIALIZE [SYSTEM={system}]"
+    },
+    {
+      "pattern": "set {context} context",
+      "template": ">>> SET_CONTEXT [CONTEXT={context}]"
+    },
+    {
+      "pattern": "in the context of {context}",
+      "template": ">>> SET_CONTEXT [CONTEXT={context}]"
+    },
+    {
+      "pattern": "execute {task}",
+      "template": ">>> EXECUTE [TASK={task}]"
+    },
+    {
+      "pattern": "retrieve {data}",
+      "template": ">>> EXECUTE_TASK [TASK=retrieve_{data}]"
+    },
+    {
+      "pattern": "generate {output}",
+      "template": ">>> EXECUTE_TASK [TASK=generate_{output}]"
+    },
+    {
+      "pattern": "{action} {object}",
+      "template": ">>> EXECUTE_TASK [TASK={action}_{object}]"
+    },
+    {
+      "pattern": "if {condition}, {action}, otherwise {alternative}",
+      "template": ">>> CONDITIONAL [CONDITION={condition}]\n    >>> {action}\n>>> ELSE\n    >>> {alternative}\n>>> END_CONDITIONAL"
+    },
+    {
+      "pattern": "simultaneously {action1} and {action2}",
+      "template": ">>> PARALLEL\n    >>> {action1}\n    >>> {action2}\n>>> END_PARALLEL"
+    },
+    {
+      "pattern": "repeat {action} {count} times",
+      "template": ">>> REPEAT [count={count}]\n    >>> {action}\n>>> END_REPEAT"
+    },
+    {
+      "pattern": "{source} and pass it to {target}",
+      "template": ">>> PIPE\n    >>> SOURCE\n        >>> {source}\n    >>> TARGET\n        >>> {target}\n>>> END_PIPE"
+    },
+    {
+      "pattern": "set {variable} to {value}",
+      "template": ">>> ASSIGN [{variable}] = [{value}]"
+    },
+    {
+      "pattern": "combine {item1}, {item2}, and {item3}",
+      "template": ">>> BATCH_OPERATION\n    >>> {item1}\n    >>> {item2}\n    >>> {item3}\n>>> END_BATCH"
+    }
+  ]
+}

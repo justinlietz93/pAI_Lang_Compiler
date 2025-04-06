@@ -1,0 +1,6 @@
+lark-parser>=1.1.5
+numpy>=1.20.0
+pyyaml>=6.0
+pytest>=7.0.0
+pytest-cov>=4.0.0
+coverage>=7.0.0

@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "description": "Transformation matrix for Command Language to pAI_Lang",
+  "rules": [
+    {
+      "pattern": ">>> INITIALIZE [SYSTEM={system}]",
+      "template": "S1"
+    },
+    {
+      "pattern": ">>> SET_CONTEXT [CONTEXT={context}]",
+      "template": "!C{context_id}"
+    },
+    {
+      "pattern": ">>> EXECUTE [TASK={task}]",
+      "template": "T{task_id}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK={task}]",
+      "template": "T{task_id}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK=retrieve_{data}]",
+      "template": "T{data_id}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK=generate_{output}]",
+      "template": "T{output_id}"
+    },
+    {
+      "pattern": ">>> CONDITIONAL [CONDITION={condition}]",
+      "template": "C{condition_id}?"
+    },
+    {
+      "pattern": ">>> ELSE",
+      "template": ":"
+    },
+    {
+      "pattern": ">>> END_CONDITIONAL",
+      "template": ""
+    },
+    {
+      "pattern": ">>> PARALLEL",
+      "template": "("
+    },
+    {
+      "pattern": ">>> END_PARALLEL",
+      "template": ")&"
+    },
+    {
+      "pattern": ">>> REPEAT [count={count}]",
+      "template": "**{count}"
+    },
+    {
+      "pattern": ">>> END_REPEAT",
+      "template": ""
+    },
+    {
+      "pattern": ">>> PIPE",
+      "template": "("
+    },
+    {
+      "pattern": ">>> SOURCE",
+      "template": ""
+    },
+    {
+      "pattern": ">>> TARGET",
+      "template": ")|"
+    },
+    {
+      "pattern": ">>> END_PIPE",
+      "template": ""
+    },
+    {
+      "pattern": ">>> ASSIGN [{variable}] = [{value}]",
+      "template": "V{variable_id}=D{value_id}"
+    },
+    {
+      "pattern": ">>> BATCH_OPERATION",
+      "template": "#{"
+    },
+    {
+      "pattern": ">>> END_BATCH",
+      "template": "}"
+    }
+  ]
+}

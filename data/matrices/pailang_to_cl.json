@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "description": "Transformation matrix for pAI_Lang to Command Language",
+  "rules": [
+    {
+      "pattern": "S1",
+      "template": ">>> INITIALIZE [SYSTEM=AI]"
+    },
+    {
+      "pattern": "!C{context_id}",
+      "template": ">>> SET_CONTEXT [CONTEXT={context}]"
+    },
+    {
+      "pattern": "T{task_id}",
+      "template": ">>> EXECUTE_TASK [TASK={task}]"
+    },
+    {
+      "pattern": "{expr1}>{expr2}",
+      "template": "{expr1}\n{expr2}"
+    },
+    {
+      "pattern": "{expr1}&{expr2}",
+      "template": ">>> PARALLEL\n    {expr1}\n    {expr2}\n>>> END_PARALLEL"
+    },
+    {
+      "pattern": "C{condition_id}?{expr1}:{expr2}",
+      "template": ">>> CONDITIONAL [CONDITION={condition}]\n    {expr1}\n>>> ELSE\n    {expr2}\n>>> END_CONDITIONAL"
+    },
+    {
+      "pattern": "**{count}{expr}",
+      "template": ">>> REPEAT [count={count}]\n    {expr}\n>>> END_REPEAT"
+    },
+    {
+      "pattern": "{expr1}|{expr2}",
+      "template": ">>> PIPE\n    >>> SOURCE\n        {expr1}\n    >>> TARGET\n        {expr2}\n>>> END_PIPE"
+    },
+    {
+      "pattern": "V{variable_id}=D{value_id}",
+      "template": ">>> ASSIGN [{variable}] = [{value}]"
+    },
+    {
+      "pattern": "#{{{expr_list}}}",
+      "template": ">>> BATCH_OPERATION\n    {expr_list}\n>>> END_BATCH"
+    }
+  ]
+}

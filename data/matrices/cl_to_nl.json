@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "description": "Transformation matrix for Command Language to Natural Language",
+  "rules": [
+    {
+      "pattern": ">>> INITIALIZE [SYSTEM={system}]",
+      "template": "Initialize the {system} system"
+    },
+    {
+      "pattern": ">>> SET_CONTEXT [CONTEXT={context}]",
+      "template": "In the context of {context}"
+    },
+    {
+      "pattern": ">>> EXECUTE [TASK={task}]",
+      "template": "Execute {task}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK={task}]",
+      "template": "Perform {task}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK=retrieve_{data}]",
+      "template": "Retrieve {data}"
+    },
+    {
+      "pattern": ">>> EXECUTE_TASK [TASK=generate_{output}]",
+      "template": "Generate {output}"
+    },
+    {
+      "pattern": ">>> CONDITIONAL [CONDITION={condition}]",
+      "template": "If {condition},"
+    },
+    {
+      "pattern": ">>> ELSE",
+      "template": "otherwise"
+    },
+    {
+      "pattern": ">>> END_CONDITIONAL",
+      "template": ""
+    },
+    {
+      "pattern": ">>> PARALLEL",
+      "template": "Simultaneously"
+    },
+    {
+      "pattern": ">>> END_PARALLEL",
+      "template": ""
+    },
+    {
+      "pattern": ">>> REPEAT [count={count}]",
+      "template": "Repeat {count} times:"
+    },
+    {
+      "pattern": ">>> END_REPEAT",
+      "template": ""
+    },
+    {
+      "pattern": ">>> PIPE",
+      "template": ""
+    },
+    {
+      "pattern": ">>> SOURCE",
+      "template": ""
+    },
+    {
+      "pattern": ">>> TARGET",
+      "template": "and pass it to"
+    },
+    {
+      "pattern": ">>> END_PIPE",
+      "template": ""
+    },
+    {
+      "pattern": ">>> ASSIGN [{variable}] = [{value}]",
+      "template": "Set {variable} to {value}"
+    },
+    {
+      "pattern": ">>> BATCH_OPERATION",
+      "template": "Combine"
+    },
+    {
+      "pattern": ">>> END_BATCH",
+      "template": "into a single view"
+    }
+  ]
+}
